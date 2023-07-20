@@ -60,7 +60,7 @@ As an open-source app, Auberge warmly welcomes contributions from passionate dev
 
 | Announcements Screen | User Complaint Screen | Mess Screen |User Profile Screen |
 | ------------- | ------------- |------------- |------------- |
-|      <img src="https://github.com/Photon3009/Auberge/assets/100941430/b53c4e3f-a949-40f0-a5d7-3e4a7aead1db" alt="animated " height = "480" width= "200" /> |  <img src = "https://github.com/Photon3009/Auberge/assets/100941430/3e74427f-dd9e-4710-9c38-7f97c1117743" alt = "animated"  height = "480" width= "200"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/4c010c69-7045-4363-9000-df1e78a7913d" alt = "animated"  height = "480" width= "200"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/10d6a862-9924-4b16-9093-289d3a229c94" alt = "animated"  height = "480" width= "200"/> |
+| <img src="https://github.com/Photon3009/Auberge/assets/100941430/dc8d0899-0047-473d-b18a-c15a1e174873" alt="animated " height = "480" width= "200" /> |  <img src = "https://github.com/Photon3009/Auberge/assets/100941430/3e74427f-dd9e-4710-9c38-7f97c1117743" alt = "animated"  height = "480" width= "200"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/4c010c69-7045-4363-9000-df1e78a7913d" alt = "animated"  height = "480" width= "200"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/10d6a862-9924-4b16-9093-289d3a229c94" alt = "animated"  height = "480" width= "200"/> |
 
 ### Admin Section
 | Mess Menu Change Screen | Admin Complaint Screen | Mess Screen |Create Announcement Screen |
