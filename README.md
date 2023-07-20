@@ -27,6 +27,8 @@ As an open-source app, Auberge warmly welcomes contributions from passionate dev
   - [Make Changes](#make-changes)
   - [Commit and Push](#commit-and-push)
   - [Submit a Pull Request](#submit-a-pull-request)
+- [Pre-Release Version](#pre-release-version)
+- [Testing Credentials](#testing-credentials)
 - [License](#license)
 - [Contact](#contact)
 
@@ -54,18 +56,18 @@ As an open-source app, Auberge warmly welcomes contributions from passionate dev
 
 | Splash Screen | Onboarding Screen | Login/SignUp Screen |
 | ------------- | ------------- |------------- |
-|      <img src="https://github.com/Photon3009/Auberge/assets/100941430/736e0f73-51bc-45c6-99af-4d2b4309d9b1" alt="animated " height = "480" width= "200" /> |  <img src = "https://github.com/Photon3009/Auberge/assets/100941430/7ba7eca4-c13c-4270-a1a5-b58e82b6b4a2" alt = "animated"  height = "480" width= "200"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/33359c4f-03c4-40a5-bb4e-a151581b33e4" alt = "animated"  height = "480" width= "200"/> |
+|      <img src="https://github.com/Photon3009/Auberge/assets/100941430/736e0f73-51bc-45c6-99af-4d2b4309d9b1" alt="animated " height = "500" width= "230" /> |  <img src = "https://github.com/Photon3009/Auberge/assets/100941430/7ba7eca4-c13c-4270-a1a5-b58e82b6b4a2" alt = "animated"  height = "500" width= "230"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/33359c4f-03c4-40a5-bb4e-a151581b33e4" alt = "animated"  height = "500" width= "230"/> |
 
 ### UserSection
 
 | Announcements Screen | User Complaint Screen | Mess Screen |User Profile Screen |
 | ------------- | ------------- |------------- |------------- |
-| <img src="https://github.com/Photon3009/Auberge/assets/100941430/dc8d0899-0047-473d-b18a-c15a1e174873" alt="animated " height = "480" width= "200" /> |  <img src = "https://github.com/Photon3009/Auberge/assets/100941430/3e74427f-dd9e-4710-9c38-7f97c1117743" alt = "animated"  height = "480" width= "200"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/4c010c69-7045-4363-9000-df1e78a7913d" alt = "animated"  height = "480" width= "200"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/10d6a862-9924-4b16-9093-289d3a229c94" alt = "animated"  height = "480" width= "200"/> |
+| <img src="https://github.com/Photon3009/Auberge/assets/100941430/dc8d0899-0047-473d-b18a-c15a1e174873" alt="animated " height = "500" width= "230" /> |  <img src = "https://github.com/Photon3009/Auberge/assets/100941430/3e74427f-dd9e-4710-9c38-7f97c1117743" alt = "animated"  height = "500" width= "230"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/4c010c69-7045-4363-9000-df1e78a7913d" alt = "animated"  height = "500" width= "230"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/10d6a862-9924-4b16-9093-289d3a229c94" alt = "animated"  height = "500" width= "230"/> |
 
 ### Admin Section
 | Mess Menu Change Screen | Admin Complaint Screen | Mess Screen |Create Announcement Screen |
 | ------------- | ------------- |------------- |------------- |
-|      <img src="https://github.com/Photon3009/Auberge/assets/100941430/df9edaf3-d6cd-4a6b-a4cf-4db682263677" alt="animated " height = "480" width= "200" /> |  <img src = "https://github.com/Photon3009/Auberge/assets/100941430/1d140c54-c36c-4228-918c-eb4ad94a9d1e" alt = "animated"  height = "480" width= "200"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/ace315a9-6b55-4676-90d5-3d0af560376a" alt = "animated"  height = "480" width= "200"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/a83c71e9-b1e2-4683-962d-55e3b3a50f4b" alt = "animated"  height = "480" width= "200"/> |
+|      <img src="https://github.com/Photon3009/Auberge/assets/100941430/df9edaf3-d6cd-4a6b-a4cf-4db682263677" alt="animated " height = "500" width= "230" /> |  <img src = "https://github.com/Photon3009/Auberge/assets/100941430/1d140c54-c36c-4228-918c-eb4ad94a9d1e" alt = "animated"  height = "500" width= "230"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/ace315a9-6b55-4676-90d5-3d0af560376a" alt = "animated"  height = "500" width= "230"/> |<img src = "https://github.com/Photon3009/Auberge/assets/100941430/a83c71e9-b1e2-4683-962d-55e3b3a50f4b" alt = "animated"  height = "500" width= "230"/> |
 
 ## Getting Started
 
@@ -249,6 +251,24 @@ After making the changes, follow these steps to commit and push them to your Git
 - Fill in the necessary details about your changes and click on "Create pull request."
 
 - Your pull request will be reviewed, and once approved, your changes will be merged into the main repository.
+
+## Pre-Release Version
+
+A pre-release version of Auberge is available for testing and feedback. You can access the pre-release on the [Releases page](https://github.com/Photon3009/Auberge/releases). Please download the APK file for the pre-release and feel free to provide feedback and report any issues you encounter. Your feedback is valuable in improving Auberge for everyone.
+![Screenshot (633)](https://github.com/Photon3009/Auberge/assets/100941430/03c49113-7e2d-448f-990d-eee517ad392c)
+
+## Testing Credentials
+
+### User Credentials
+
+- **User Email:** testuser1@gmail.com
+- **Password:** -testuser1-
+
+### Admin Credentials
+
+- **Admin Email:** testadmin1@gmail.com
+- **Password:** -testadmin1-
+
 
 ## License
 
