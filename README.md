@@ -2,19 +2,19 @@
 
 🏨📱 Auberge - IET Hostel Management App 🚀
 
-Welcome to Auberge, the cutting-edge hostel management app designed with 💖 for hostel residents and administrators alike! Powered by the latest technologies like Flutter, Firebase, and Google Sheets API, Auberge offers a seamless and efficient platform for managing all aspects of hostel life.
+- Welcome to Auberge, the cutting-edge hostel management app designed with 💖 for hostel residents and administrators alike! Powered by the latest technologies like Flutter, Firebase, and Google Sheets API, Auberge offers a seamless and efficient platform for managing all aspects of hostel life.
 
-📢 Stay informed! With Auberge, residents receive important announcements from administrators right at their fingertips. No more missing out on crucial updates!
+- 📢 Stay informed! With Auberge, residents receive important announcements from administrators right at their fingertips. No more missing out on crucial updates!
 
-🛠️ Report maintenance issues made easy! Residents can effortlessly submit maintenance complaints through the app, ensuring a swift resolution to any problems.
+- 🛠️ Report maintenance issues made easy! Residents can effortlessly submit maintenance complaints through the app, ensuring a swift resolution to any problems.
 
-🍽️ Hungry? Check out the daily mess menu! Auberge provides daily updates on the mess menu, making it a breeze for residents to plan their meals. 🍕🍔🍲
+- 🍽️ Hungry? Check out the daily mess menu! Auberge provides daily updates on the mess menu, making it a breeze for residents to plan their meals. 🍕🍔🍲
 
-😋 Share your thoughts on food quality! With Auberge, residents can provide valuable feedback by rating the food they eat. Let's make the mess even better together! 👍👎
+- 😋 Share your thoughts on food quality! With Auberge, residents can provide valuable feedback by rating the food they eat. Let's make the mess even better together! 👍👎
 
-🌟 Elegant and user-friendly! Auberge boasts a sleek interface that guarantees a delightful user experience. Smooth sailing through every feature! ⛵
+- 🌟 Elegant and user-friendly! Auberge boasts a sleek interface that guarantees a delightful user experience. Smooth sailing through every feature! ⛵
 
-🌟 Join the Auberge community! As an open-source app, we warmly welcome contributions from passionate developers like you! 🤝 Together, we can make Auberge even more extraordinary! 🚀
+- 🌟 Join the Auberge community! As an open-source app, we warmly welcome contributions from passionate developers like you! 🤝 Together, we can make Auberge even more extraordinary! 🚀
 
 With Auberge, hostel management has never been more efficient and enjoyable. Join us in this exciting journey of innovation and excellence! 🌈
 
@@ -44,24 +44,17 @@ With Auberge, hostel management has never been more efficient and enjoyable. Joi
 
 ## Features
 
-- **Announcements and Notifications**
-  Administrators can effortlessly send important announcements to all residents through the app. This keeps residents informed about events, notices, and updates in real-time.
-  
-- **Complaint Management**
-  Auberge provides a user-friendly interface for residents to lodge complaints regarding hostel maintenance issues. This feature ensures prompt attention to problems, leading to a smoother living environment.
-  
-- **Mess Menu Updates**
-  Residents can access daily updated mess menus through the app. This functionality allows them to plan their meals accordingly, improving mealtime experiences.
-  
-- **Food Rating System**
-  The app enables residents to provide feedback on the quality of daily mess food through a rating system. This fosters transparency and encourages continuous improvement in food services.
-  
-- **User-Friendly UI**
-  Auberge boasts a beautiful and intuitive user interface, ensuring a pleasant experience for all users. The clean design enhances navigation and usability.
-  
-- **Future Feature Expansion**
- As this is an open-source project, so contributors will add more exciting features to Auberge in the future. This commitment ensures that the app remains relevant and constantly evolving to meet user's needs.
+- **Announcements and Notifications** 🔔: Administrators can effortlessly send important announcements to all residents through the app in real-time. Stay informed about events, notices, and updates!
 
+- **Complaint Management** 🛠️: Lodge maintenance complaints with ease through a user-friendly interface. We ensure prompt attention to problems, leading to a smoother living environment.
+
+- **Mess Menu Updates** 🍽️: Access daily updated mess menus through the app to plan your meals accordingly and improve your mealtime experiences.
+
+- **Food Rating System** 🌟: Provide feedback on the quality of daily mess food through our rating system. Foster transparency and encourage continuous improvement in food services.
+
+- **User-Friendly UI** 🎨📱: Auberge boasts a beautiful and intuitive user interface, ensuring a pleasant experience for all users. The clean design enhances navigation and usability.
+
+- **Future Feature Expansion** 🚀🔮: As an open-source project, we welcome contributions from developers like you! Expect exciting new features in the future, ensuring the app remains relevant and constantly evolving to meet users' needs.
 ## UI Preview
 
 | Splash Screen | Onboarding Screen | Login/SignUp Screen |
