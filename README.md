@@ -16,7 +16,7 @@
 
 - 🌟 Join the Auberge community! As an open-source app, we warmly welcome contributions from passionate developers like you! 🤝 Together, we can make Auberge even more extraordinary! 🚀
 
-With Auberge, hostel management has never been more efficient and enjoyable. Join us in this exciting journey of innovation and excellence! 🌈
+With Auberge, hostel management has never been more efficient and enjoyable. Join us in this exciting journey of innovation and excellence!
 
 <div align="center">
  <img src="https://github.com/Photon3009/Auberge/assets/100941430/a20053ef-53d5-4433-95bd-bfbe013e0f99" alt="Logo" width="250" height = "250" />
