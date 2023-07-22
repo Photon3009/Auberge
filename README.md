@@ -1,12 +1,22 @@
 # Auberge - IET Hostel Management App
 
-Auberge is an innovative hostel management app developed using cutting-edge technologies, including Flutter, Firebase, and Google Sheets API. Its primary goal is to optimize and streamline various hostel management tasks, offering a seamless and efficient platform for both hostel residents and administrators to interact and manage all aspects of hostel life.
+🏨📱 Auberge - IET Hostel Management App 🚀
 
-Through Auberge, residents can effortlessly stay informed about important announcements from administrators and conveniently submit maintenance complaints whenever needed. Additionally, the app provides daily updates on the mess menu, allowing residents to plan their meals with ease and even provide valuable feedback by rating the food quality.
+Welcome to Auberge, the cutting-edge hostel management app designed with 💖 for hostel residents and administrators alike! Powered by the latest technologies like Flutter, Firebase, and Google Sheets API, Auberge offers a seamless and efficient platform for managing all aspects of hostel life.
 
-Our commitment to excellence extends to the app's elegant and user-friendly interface, ensuring a delightful user experience for everyone. Furthermore, we are continuously working on enhancing Auberge by adding more exciting features in the pipeline.
+📢 Stay informed! With Auberge, residents receive important announcements from administrators right at their fingertips. No more missing out on crucial updates!
 
-As an open-source app, Auberge warmly welcomes contributions from passionate developers like you ❤️.
+🛠️ Report maintenance issues made easy! Residents can effortlessly submit maintenance complaints through the app, ensuring a swift resolution to any problems.
+
+🍽️ Hungry? Check out the daily mess menu! Auberge provides daily updates on the mess menu, making it a breeze for residents to plan their meals. 🍕🍔🍲
+
+😋 Share your thoughts on food quality! With Auberge, residents can provide valuable feedback by rating the food they eat. Let's make the mess even better together! 👍👎
+
+🌟 Elegant and user-friendly! Auberge boasts a sleek interface that guarantees a delightful user experience. Smooth sailing through every feature! ⛵
+
+🌟 Join the Auberge community! As an open-source app, we warmly welcome contributions from passionate developers like you! 🤝 Together, we can make Auberge even more extraordinary! 🚀
+
+With Auberge, hostel management has never been more efficient and enjoyable. Join us in this exciting journey of innovation and excellence! 🌈
 
 <div align="center">
  <img src="https://github.com/Photon3009/Auberge/assets/100941430/a20053ef-53d5-4433-95bd-bfbe013e0f99" alt="Logo" width="250" height = "250" />
