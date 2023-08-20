@@ -71,12 +71,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
       setState(() {
         loading = false;
       });
-      if (kDebugMode) {
-        print('Found');
+      if (value == true) {
+        if (kDebugMode) {
+          print('Found');
+        }
+        signUp();
       }
-      signUp();
+      else{
+        Utils.toastMessage('Please signUp with your hostel details!');
+      }
     }).onError((error, stackTrace) {
-      Utils.toastMessage('Please signUp with your hostel details!');
+      Utils.toastMessage('Error found, please try Again');
+      print(error.toString());
       setState(() {
         loading = false;
       });
