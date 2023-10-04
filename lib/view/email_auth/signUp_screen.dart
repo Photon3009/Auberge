@@ -1,14 +1,15 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:auberge/ghseets.dart';
 import 'package:auberge/resources/widgets/custom_button.dart';
 import 'package:auberge/resources/widgets/custom_text_field.dart';
 import 'package:auberge/utils/routes/routes_names.dart';
 import 'package:auberge/utils/utils.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
+
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
@@ -26,7 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     'Vishveshwarya Bhawan - B Hostel',
     'Raman Bhawan - A Hostel',
     'Raman Bhawan - B Hostel',
-    'Bhabha Hostel'
+    'Bhabha Hostel',
   ];
 
   String? hostel;
@@ -76,9 +77,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           print('Found');
         }
         signUp();
-      }
-      else{
-        Utils.toastMessage('Please signUp with your hostel details!');
+      } else {
+        Utils.toastMessage('Please sign up with your hostel details!');
       }
     }).onError((error, stackTrace) {
       Utils.toastMessage('Error found, please try Again');
@@ -91,33 +91,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double h = MediaQuery.of(context).size.height;
-    return SafeArea(child: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints viewportConstraints) {
-      return Scaffold(
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    return SafeArea(
+      child: Scaffold(
         appBar: AppBar(
           title: const Text('SignUp'),
         ),
         body: SingleChildScrollView(
           child: SizedBox(
-            height: h / 1.1,
+            height: screenHeight,
             child: ConstrainedBox(
               constraints: BoxConstraints(
-                minHeight: viewportConstraints.maxHeight,
+                minHeight: screenHeight,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
+                children: <Widget>[
                   Image.asset(
                     'assets/images/aub_logo4-removebg-preview.png',
-                    width: 300,
-                    height: 150,
+                    width: screenWidth * 0.7,
+                    height: screenHeight * 0.15,
                     fit: BoxFit.scaleDown,
                   ),
                   Image.asset(
                     'assets/images/duck-dance-unscreen.gif',
-                    width: 300,
-                    height: 200,
+                    width: screenWidth * 0.7,
+                    height: screenHeight * 0.2,
                     fit: BoxFit.scaleDown,
                   ),
                   Column(
@@ -129,21 +130,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             left: 12, right: 12, bottom: 12),
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.white,
-                              border:
-                                  Border.all(color: Colors.black, width: 0.2),
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey.withOpacity(0.3),
-                                    offset: const Offset(2, 1),
-                                    blurRadius: 2)
-                              ]),
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black, width: 0.2),
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                offset: const Offset(2, 1),
+                                blurRadius: 2,
+                              ),
+                            ],
+                          ),
                           child: Padding(
                             padding: const EdgeInsets.only(left: 8.0),
                             child: DropdownButton(
-                              hint: const Text(
-                                  'Please choose a hostel'), // Not necessary for Option 1
+                              hint: const Text('Please choose a hostel'),
                               value: hostel,
                               onChanged: (newValue) {
                                 setState(() {
@@ -164,49 +165,53 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 10,
                       ),
                       Form(
-                          key: _formKey,
-                          child: Column(
-                            children: [
-                              CustomTextField(
-                                  hintText: 'Email',
-                                  controller: emailController,
-                                  icon: Icons.email,
-                                  keyboardType: TextInputType.emailAddress,
-                                  obscureText: false,
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Enter email';
-                                    }
-                                    return null;
-                                  }),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              CustomTextField(
-                                  hintText: 'Password',
-                                  controller: passwordController,
-                                  icon: Icons.password,
-                                  obscureText: true,
-                                  keyboardType: TextInputType.text,
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Enter password';
-                                    }
-                                    return null;
-                                  }),
-                            ],
-                          )),
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            CustomTextField(
+                              hintText: 'Email',
+                              controller: emailController,
+                              icon: Icons.email,
+                              keyboardType: TextInputType.emailAddress,
+                              obscureText: false,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Enter email';
+                                }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            CustomTextField(
+                              hintText: 'Password',
+                              controller: passwordController,
+                              icon: Icons.password,
+                              obscureText: true,
+                              keyboardType: TextInputType.text,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Enter password';
+                                }
+                                return null;
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
                       const SizedBox(
                         height: 30,
                       ),
                       CustomButton(
-                          msg: 'SignUp',
-                          loading: loading,
-                          onTap: () {
-                            if (_formKey.currentState!.validate()) {
-                              _checkEmailExists();
-                            }
-                          }),
+                        msg: 'SignUp',
+                        loading: loading,
+                        onTap: () {
+                          if (_formKey.currentState!.validate()) {
+                            _checkEmailExists();
+                          }
+                        },
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 20, right: 12, bottom: 12),
@@ -214,14 +219,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           children: [
                             const Text("Already have an account already?"),
                             TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, RoutesName.login);
-                                },
-                                child: const Text(
-                                  'Login',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ))
+                              onPressed: () {
+                                Navigator.pushNamed(context, RoutesName.login);
+                              },
+                              child: const Text(
+                                'Login',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -230,8 +235,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text("Made for IETians with ❤️",
-                      style: TextStyle(color: Colors.grey, fontSize: 18)),
+                  const Text(
+                    "Made for IETians with ❤️",
+                    style: TextStyle(color: Colors.grey, fontSize: 18),
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -240,7 +247,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ),
         ),
-      );
-    }));
+      ),
+    );
   }
 }

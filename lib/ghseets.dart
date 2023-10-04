@@ -8,19 +8,19 @@ import 'viewmodel/users.dart';
 class Gsheets {
   static const _credentials = r'''
 {
-  YOUR GSEETS CREDENTIALS
+ YOUR GSEETS CREDENTIALS
 }
 ''';
 
   static const _spreadsheetID = 'YOUR SPREADSHEET ID';
   final UserServices _userServicse = UserServices();
 
-  Future<bool?> readDatafromGSheet(String email, String hostel) async {
+  Future<bool> readDatafromGSheet(String email, String hostel) async {
     final gsheets = GSheets(_credentials);
-    final ss = await gsheets.spreadsheet(_spreadsheetID); 
+    final ss = await gsheets.spreadsheet(_spreadsheetID);
     var sheet = ss.worksheetByTitle(hostel);
     final rows = await sheet!.values.allRows();
-    bool? check;
+    bool check = false;
 
     int numberOfRowsWithData = 0;
     for (final row in rows) {
@@ -38,7 +38,7 @@ class Gsheets {
         break;
       }
     }
-
+    print(check);
     return check;
   }
 
@@ -59,15 +59,15 @@ class Gsheets {
     List<Cell> cellsRow;
     for (var i = 1; i < numberOfRowsWithData + 1; i++) {
       cellsRow = await sheet.cells.row(i);
-      print(cellsRow.elementAt(2).value);
-      if (cellsRow.elementAt(2).value == user!.email) {
+      print(cellsRow.elementAt(1).value);
+      if (cellsRow.elementAt(1).value == user!.email) {
         try {
           _userServicse.createUser({
             "id": user.uid.toString(),
-            "name": cellsRow.elementAt(1).value.toString(),
-            "email": cellsRow.elementAt(2).value.toString(),
-            "number": cellsRow.elementAt(4).value.toString(),
-            "room": cellsRow.elementAt(3).value.toString(),
+            "name": cellsRow.elementAt(0).value.toString(),
+            "email": cellsRow.elementAt(1).value.toString(),
+            "number": cellsRow.elementAt(3).value.toString(),
+            "room": cellsRow.elementAt(2).value.toString(),
             "userType": "Regular",
           });
 
