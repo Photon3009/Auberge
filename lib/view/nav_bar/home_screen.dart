@@ -50,23 +50,20 @@ class _HomeState extends State<HomeScreen> {
             color: Colors.white,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height / 1.1,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Column(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           if (name != null)
@@ -87,105 +84,101 @@ class _HomeState extends State<HomeScreen> {
                                   fontSize: 25)),
                         ],
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.add, size: 30),
-                        onPressed: () {
-                          // Perform search operation
-                          Navigator.pushNamed(context, RoutesName.addAnnounce);
-                        },
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              SingleChildScrollView(
-                  child: SizedBox(
-                      height: h / 1.36,
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: StreamBuilder<QuerySnapshot>(
-                                stream: FirebaseFirestore.instance
-                                    .collection('announcements')
-                                    .snapshots(),
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasError) {
-                                    return Text('Error: ${snapshot.error}');
-                                  }
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.add, size: 30),
+                      onPressed: () {
+                        // Perform search operation
+                        Navigator.pushNamed(context, RoutesName.addAnnounce);
+                      },
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                  ],
+                )
+              ],
+            ),
+            SingleChildScrollView(
+                child: SizedBox(
+                    height: h / 1.36,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: StreamBuilder<QuerySnapshot>(
+                              stream: FirebaseFirestore.instance
+                                  .collection('announcements')
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (snapshot.hasError) {
+                                  return Text('Error: ${snapshot.error}');
+                                }
 
-                                  if (!snapshot.hasData) {
-                                    return Container(
-                                        color: Colors.white,
-                                        child: const Center(
-                                            child: SpinKitFadingCube(
-                                                color: primary, size: 100.0)));
-                                  }
+                                if (!snapshot.hasData) {
+                                  return Container(
+                                      color: Colors.white,
+                                      child: const Center(
+                                          child: SpinKitFadingCube(
+                                              color: primary, size: 100.0)));
+                                }
 
-                                  // Data is available
-                                  final announcementDocs = snapshot.data!.docs;
+                                // Data is available
+                                final announcementDocs = snapshot.data!.docs;
 
-                                  if (announcementDocs.isEmpty) {
-                                    return Center(
-                                      child: Column(
-                                        children: [
-                                          const SizedBox(
-                                            height: 70,
-                                          ),
-                                          Image.asset(
-                                            'assets/images/aano.png',
-                                            width: 270,
-                                            height: 370,
-                                            fit: BoxFit.scaleDown,
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }
-
-                                  return ListView.builder(
-                                    itemCount: announcementDocs.length,
-                                    reverse: false,
-                                    itemBuilder: (context, index) {
-                                      final announcement =
-                                          announcementDocs[index].data()
-                                              as Map<String, dynamic>?;
-                                      final title =
-                                          announcement?['title'] as String? ??
-                                              "";
-                                      final description =
-                                          announcement?['description']
-                                                  as String? ??
-                                              "";
-                                      final timestamp = announcement?['date'];
-                                      final time = DateTime.parse(timestamp);
-
-                                      return AnnouncementContainer(
-                                        title: title,
-                                        description: description,
-                                        timestamp: time,
-                                      );
-                                    },
+                                if (announcementDocs.isEmpty) {
+                                  return Center(
+                                    child: Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: 70,
+                                        ),
+                                        Image.asset(
+                                          'assets/images/aano.png',
+                                          width: 270,
+                                          height: 370,
+                                          fit: BoxFit.scaleDown,
+                                        ),
+                                      ],
+                                    ),
                                   );
-                                },
-                              ),
+                                }
+
+                                return ListView.builder(
+                                  itemCount: announcementDocs.length,
+                                  reverse: false,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    final announcement = announcementDocs[index]
+                                        .data() as Map<String, dynamic>?;
+                                    final title =
+                                        announcement?['title'] as String? ?? "";
+                                    final description =
+                                        announcement?['description']
+                                                as String? ??
+                                            "";
+                                    final timestamp = announcement?['date'];
+                                    final time = DateTime.parse(timestamp);
+
+                                    return AnnouncementContainer(
+                                      title: title,
+                                      description: description,
+                                      timestamp: time,
+                                    );
+                                  },
+                                );
+                              },
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                          ])))
-            ],
-          ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                        ])))
+          ],
         ),
       ),
     );
