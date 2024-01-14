@@ -36,13 +36,13 @@ class _HomeState extends State<ProfileScreen> {
             ),
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height / 1.1,
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Container(
+            margin: const EdgeInsets.only(bottom: 60),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 40.0),
+                const SizedBox(height: 10.0),
                 Text(
                   name,
                   style: const TextStyle(
@@ -51,7 +51,6 @@ class _HomeState extends State<ProfileScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8.0),
                 Text(
                   "Room No. $room",
                   style: const TextStyle(
@@ -60,7 +59,6 @@ class _HomeState extends State<ProfileScreen> {
                     color: Color.fromARGB(255, 78, 77, 77),
                   ),
                 ),
-                const SizedBox(height: 16.0),
                 const Divider(),
                 ListTile(
                   leading: const Icon(
