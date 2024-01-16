@@ -42,7 +42,7 @@ class _HomeState extends State<ProfileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 10.0),
+                const SizedBox(height: 5.0),
                 Text(
                   name,
                   style: const TextStyle(
@@ -97,12 +97,12 @@ class _HomeState extends State<ProfileScreen> {
                         fontFamily: "Sen",
                         fontSize: 18,
                         fontWeight: FontWeight.bold)),
-                const SizedBox(height: 10.0),
                 const Padding(
                   padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
                   child: Center(
                     child: Text(
                         "If you would like to provide feedback or suggest new features, please send an email to aubergefeedback@gmail.com",
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white,
                             fontFamily: "Sen",
