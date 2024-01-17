@@ -36,13 +36,13 @@ class _HomeState extends State<ProfileScreen> {
             ),
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height / 1.1,
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Container(
+            margin: const EdgeInsets.only(bottom: 60),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 40.0),
+                const SizedBox(height: 5.0),
                 Text(
                   name,
                   style: const TextStyle(
@@ -51,7 +51,6 @@ class _HomeState extends State<ProfileScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8.0),
                 Text(
                   "Room No. $room",
                   style: const TextStyle(
@@ -60,7 +59,6 @@ class _HomeState extends State<ProfileScreen> {
                     color: Color.fromARGB(255, 78, 77, 77),
                   ),
                 ),
-                const SizedBox(height: 16.0),
                 const Divider(),
                 ListTile(
                   leading: const Icon(
@@ -99,12 +97,12 @@ class _HomeState extends State<ProfileScreen> {
                         fontFamily: "Sen",
                         fontSize: 18,
                         fontWeight: FontWeight.bold)),
-                const SizedBox(height: 10.0),
                 const Padding(
                   padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
                   child: Center(
                     child: Text(
                         "If you would like to provide feedback or suggest new features, please send an email to aubergefeedback@gmail.com",
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white,
                             fontFamily: "Sen",

@@ -50,23 +50,20 @@ class _HomeState extends State<HomeScreen> {
             color: Colors.white,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height / 1.1,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Column(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           if (name != null)
@@ -77,9 +74,6 @@ class _HomeState extends State<HomeScreen> {
                                     fontFamily: "Sen",
                                     fontSize: 30,
                                     fontWeight: FontWeight.w500)),
-                          const SizedBox(
-                            height: 8,
-                          ),
                           const Text('Hostel Announcements',
                               style: TextStyle(
                                   color: Color.fromRGBO(139, 140, 142, 1),
@@ -87,28 +81,27 @@ class _HomeState extends State<HomeScreen> {
                                   fontSize: 25)),
                         ],
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.add, size: 30),
-                        onPressed: () {
-                          // Perform search operation
-                          Navigator.pushNamed(context, RoutesName.addAnnounce);
-                        },
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              SingleChildScrollView(
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.add, size: 30),
+                      onPressed: () {
+                        // Perform search operation
+                        Navigator.pushNamed(context, RoutesName.addAnnounce);
+                      },
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                  ],
+                )
+              ],
+            ),
+            Expanded(
+              child: SingleChildScrollView(
                   child: SizedBox(
                       height: h / 1.36,
                       child: Column(
@@ -156,6 +149,7 @@ class _HomeState extends State<HomeScreen> {
                                   return ListView.builder(
                                     itemCount: announcementDocs.length,
                                     reverse: false,
+                                    shrinkWrap: true,
                                     itemBuilder: (context, index) {
                                       final announcement =
                                           announcementDocs[index].data()
@@ -183,9 +177,9 @@ class _HomeState extends State<HomeScreen> {
                             const SizedBox(
                               height: 10,
                             ),
-                          ])))
-            ],
-          ),
+                          ]))),
+            )
+          ],
         ),
       ),
     );
