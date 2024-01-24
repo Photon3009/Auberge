@@ -28,7 +28,7 @@ class _EditScreenState extends State<EditScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: Theme.of(context).colorScheme.secondary,
             body: Column(
               children: [
                 Form(

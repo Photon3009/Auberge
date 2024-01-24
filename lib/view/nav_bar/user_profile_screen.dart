@@ -26,6 +26,8 @@ class _HomeState extends State<ProfileScreen> {
     final phone = userProvider.user?.number ?? 'Loading';
     final room = userProvider.user?.room ?? 'Loading';
 
+    final themeChange = Provider.of<UserProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.only(top: 28.0),
       child: Container(
@@ -46,10 +48,10 @@ class _HomeState extends State<ProfileScreen> {
                 Text(
                   name,
                   style: const TextStyle(
-                    fontSize: 34.0,
-                    fontFamily: "Sen",
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontSize: 34.0,
+                      fontFamily: "Sen",
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
                 ),
                 Text(
                   "Room No. $room",
@@ -66,7 +68,10 @@ class _HomeState extends State<ProfileScreen> {
                     color: Color.fromARGB(255, 106, 131, 76),
                   ),
                   title: Text(email,
-                      style: const TextStyle(fontFamily: "Sen", fontSize: 18)),
+                      style: const TextStyle(
+                          fontFamily: "Sen",
+                          fontSize: 18,
+                          color: Colors.black)),
                 ),
                 const Divider(),
                 ListTile(
@@ -75,7 +80,10 @@ class _HomeState extends State<ProfileScreen> {
                     color: Color.fromARGB(255, 106, 131, 76),
                   ),
                   title: Text(phone,
-                      style: const TextStyle(fontFamily: "Sen", fontSize: 18)),
+                      style: const TextStyle(
+                          fontFamily: "Sen",
+                          fontSize: 18,
+                          color: Colors.black)),
                 ),
                 const Divider(),
                 ListTile(
@@ -84,12 +92,23 @@ class _HomeState extends State<ProfileScreen> {
                     color: Color.fromARGB(255, 106, 131, 76),
                   ),
                   title: const Text("Edit details",
-                      style: TextStyle(fontFamily: "Sen", fontSize: 18)),
+                      style: TextStyle(
+                          fontFamily: "Sen",
+                          fontSize: 18,
+                          color: Colors.black)),
                   onTap: () {
                     Navigator.pushNamed(context, RoutesName.editScreen);
                   },
                 ),
                 const Divider(),
+                Container(
+                  child: SwitchListTile.adaptive(
+                      title: const Text("Dark Mode", style: TextStyle(color: Colors.black),),
+                      value: themeChange.darkTheme,
+                      onChanged: (bool? value) {
+                        themeChange.darkTheme = value!;
+                      }),
+                ),
                 const SizedBox(height: 250.0),
                 const Text("Made for IETians with ❤️",
                     style: TextStyle(

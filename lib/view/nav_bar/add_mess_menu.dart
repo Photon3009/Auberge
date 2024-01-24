@@ -22,7 +22,7 @@ class _AddMessMenu extends State<AddMessMenu> {
     double h = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         appBar: AppBar(
           title: const Text('Change Mess Menu'),
         ),
