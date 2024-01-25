@@ -35,9 +35,9 @@ class _HomeState extends State<MComplainScreen> {
     return Padding(
       padding: EdgeInsets.only(top: screenHeight / 30),
       child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.secondary,
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
@@ -75,7 +75,7 @@ class _HomeState extends State<MComplainScreen> {
                       Row(
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.add, size: 30),
+                            icon: Icon(Icons.add, size: 30, color: Theme.of(context).colorScheme.tertiary,),
                             onPressed: () {
                               Navigator.pushNamed(
                                   context, RoutesName.addComplain);

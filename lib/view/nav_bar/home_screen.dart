@@ -46,9 +46,9 @@ class _HomeState extends State<HomeScreen> {
     return Padding(
       padding: EdgeInsets.only(top: h / 30),
       child: Container(
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.secondary,
+            borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,8 +69,8 @@ class _HomeState extends State<HomeScreen> {
                           if (name != null)
                             Text('Hi $name 👋',
                                 overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                    color: primary,
+                                style: TextStyle(
+                                    color: Theme.of(context).colorScheme.tertiary,
                                     fontFamily: "Sen",
                                     fontSize: 30,
                                     fontWeight: FontWeight.w500)),
@@ -119,10 +119,14 @@ class _HomeState extends State<HomeScreen> {
 
                                   if (!snapshot.hasData) {
                                     return Container(
-                                        color: Colors.white,
-                                        child: const Center(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
+                                        child: Center(
                                             child: SpinKitFadingCube(
-                                                color: primary, size: 100.0)));
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .primary, size: 100.0)));
                                   }
 
                                   // Data is available

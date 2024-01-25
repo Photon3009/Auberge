@@ -28,7 +28,7 @@ class _EditScreenState extends State<EditScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: Theme.of(context).colorScheme.secondary,
             body: Column(
               children: [
                 Form(
@@ -40,6 +40,7 @@ class _EditScreenState extends State<EditScreen> {
                         ),
                         CustomTextField(
                             hintText: 'Name',
+                            color: Theme.of(context).colorScheme.secondary,
                             controller: nameController,
                             icon: Icons.person,
                             keyboardType: TextInputType.text,
@@ -55,6 +56,7 @@ class _EditScreenState extends State<EditScreen> {
                         ),
                         CustomTextField(
                             hintText: 'Email',
+                            color: Theme.of(context).colorScheme.secondary,
                             controller: emailController,
                             icon: Icons.email,
                             keyboardType: TextInputType.emailAddress,
@@ -70,6 +72,7 @@ class _EditScreenState extends State<EditScreen> {
                         ),
                         CustomTextField(
                             hintText: 'Phone Number',
+                            color: Theme.of(context).colorScheme.secondary,
                             controller: phoneController,
                             icon: Icons.phone,
                             obscureText: true,
@@ -85,6 +88,7 @@ class _EditScreenState extends State<EditScreen> {
                         ),
                         CustomTextField(
                             hintText: 'Room No',
+                            color: Theme.of(context).colorScheme.secondary,
                             controller: roomController,
                             icon: Icons.room,
                             obscureText: false,

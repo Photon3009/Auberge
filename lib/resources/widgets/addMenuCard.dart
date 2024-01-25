@@ -108,16 +108,19 @@ class _AddMessMenuCardState extends State<AddMessMenuCard> {
                                   children: [
                                     CustomTextField(
                                         hintText: "Breakfast",
+                                        color: Theme.of(context).colorScheme.secondary,
                                         controller: bController,
                                         obscureText: false,
                                         keyboardType: TextInputType.text),
                                     CustomTextField(
                                         hintText: "Lunch",
+                                        color: Theme.of(context).colorScheme.secondary,
                                         controller: lController,
                                         obscureText: false,
                                         keyboardType: TextInputType.text),
                                     CustomTextField(
                                         hintText: "Dinner",
+                                        color: Theme.of(context).colorScheme.secondary,
                                         controller: dController,
                                         obscureText: false,
                                         keyboardType: TextInputType.text),
