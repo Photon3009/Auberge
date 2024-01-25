@@ -2,6 +2,7 @@ import 'package:auberge/utils/routes/routes_names.dart';
 import 'package:auberge/viewmodel/currentUser_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -101,14 +102,13 @@ class _HomeState extends State<ProfileScreen> {
                   },
                 ),
                 const Divider(),
-                Container(
-                  child: SwitchListTile.adaptive(
-                      title: const Text("Dark Mode", style: TextStyle(color: Colors.black),),
-                      value: themeChange.darkTheme,
-                      onChanged: (bool? value) {
-                        themeChange.darkTheme = value!;
-                      }),
-                ),
+                SwitchListTile.adaptive(
+                    title: const Text("Dark Mode", style: TextStyle(color: Colors.black),),
+                    value: themeChange.darkTheme,
+                    onChanged: (bool? value) {
+                      themeChange.darkTheme = value!;
+                      Fluttertoast.showToast(msg: 'Theme changed to ${value ? 'Dark mode' : 'Light mode'}', toastLength: Toast.LENGTH_SHORT);
+                    }),
                 const SizedBox(height: 250.0),
                 const Text("Made for IETians with ❤️",
                     style: TextStyle(

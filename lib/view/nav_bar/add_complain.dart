@@ -37,6 +37,7 @@ class _AddComplainState extends State<AddComplain> {
                   children: [
                     CustomTextField(
                         hintText: 'Name',
+                        color: Theme.of(context).colorScheme.secondary,
                         controller: nameController,
                         icon: Icons.person,
                         keyboardType: TextInputType.text,
@@ -52,6 +53,7 @@ class _AddComplainState extends State<AddComplain> {
                     ),
                     CustomTextField(
                         hintText: 'Title',
+                        color: Theme.of(context).colorScheme.secondary,
                         controller: titleController,
                         icon: Icons.title,
                         keyboardType: TextInputType.text,
@@ -67,6 +69,7 @@ class _AddComplainState extends State<AddComplain> {
                     ),
                     CustomTextField(
                         hintText: 'Description',
+                        color: Theme.of(context).colorScheme.secondary,
                         controller: desController,
                         icon: Icons.description,
                         keyboardType: TextInputType.text,
@@ -82,6 +85,7 @@ class _AddComplainState extends State<AddComplain> {
                     ),
                     CustomTextField(
                         hintText: 'Room Number',
+                        color: Theme.of(context).colorScheme.secondary,
                         controller: roomController,
                         icon: Icons.room,
                         obscureText: false,
