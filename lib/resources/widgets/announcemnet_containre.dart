@@ -8,16 +8,16 @@ class AnnouncementContainer extends StatelessWidget {
   final DateTime timestamp;
 
   const AnnouncementContainer({
-    super.key,
+    Key? key,
     required this.title,
     required this.description,
     required this.timestamp,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 12),
+      padding: const EdgeInsets.all(12),
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -27,22 +27,7 @@ class AnnouncementContainer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Icon(
-                  Icons.info_outline,
-                  color: Colors.red,
-                )
-              ],
-            ),
+            _buildTitleRow(),
             const SizedBox(height: 8),
             Text(
               description,
@@ -51,15 +36,38 @@ class AnnouncementContainer extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            Text(
-              '${DateFormat('dd-MM-yyyy').format(timestamp).toString()}  ${DateFormat('HH:mm:ss').format(timestamp)}',
-              style: const TextStyle(
-                fontSize: 14,
-                color: Color.fromARGB(255, 133, 133, 133),
-              ),
-            ),
+            _buildTimestampText(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildTitleRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const Icon(
+          Icons.info_outline,
+          color: Colors.red,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTimestampText() {
+    return Text(
+      '${DateFormat('dd-MM-yyyy').format(timestamp)}  ${DateFormat('HH:mm:ss').format(timestamp)}',
+      style: const TextStyle(
+        fontSize: 14,
+        color: Color.fromARGB(255, 133, 133, 133),
       ),
     );
   }

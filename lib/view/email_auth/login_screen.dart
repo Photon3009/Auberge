@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -191,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (_formKey.currentState!.validate()) {
                               login();
                             }
-                          },
+                          }
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
@@ -218,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 20,
                     ),
                     const Text(
-                      "Made for IETians with ❤️",
+                      "Made for IETians with ❤",
                       style: TextStyle(color: Colors.grey, fontSize: 18),
                     ),
                     const SizedBox(
