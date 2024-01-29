@@ -43,7 +43,7 @@ class _HomeState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
-    return SingleChildScrollView(
+ return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(top: h / 50),
         child: Container(
