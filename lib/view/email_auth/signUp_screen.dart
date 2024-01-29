@@ -96,6 +96,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text('SignUp'),
         ),
@@ -121,116 +122,136 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: screenHeight * 0.2,
                     fit: BoxFit.scaleDown,
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 12, right: 12, bottom: 12),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.black, width: 0.2),
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.3),
-                                offset: const Offset(2, 1),
-                                blurRadius: 2,
+                  Container(
+                    padding: const EdgeInsets.only(top: 15),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 12, right: 12, bottom: 12),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.secondary,
+                              border:
+                                  Border.all(color: Colors.black, width: 0.2),
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  offset: const Offset(2, 1),
+                                  blurRadius: 2,
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: DropdownButton(
+                                hint: const Text('Please choose a hostel'),
+                                value: hostel,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    hostel = newValue;
+                                  });
+                                },
+                                items: hostelNames.map((hos) {
+                                  return DropdownMenuItem(
+                                    child: Text(hos),
+                                    value: hos,
+                                  );
+                                }).toList(),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Form(
+                          key: _formKey,
+                          child: Column(
+                            children: [
+                              CustomTextField(
+                                hintText: 'Email',
+                                color: Colors.black,
+                                controller: emailController,
+                                icon: Icons.email,
+                                keyboardType: TextInputType.emailAddress,
+                                obscureText: false,
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Enter email';
+                                  }
+                                  return null;
+                                },
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              CustomTextField(
+                                hintText: 'Password',
+                                color: Colors.black,
+                                controller: passwordController,
+                                icon: Icons.password,
+                                obscureText: true,
+                                keyboardType: TextInputType.text,
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Enter password';
+                                  }
+                                  return null;
+                                },
                               ),
                             ],
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: DropdownButton(
-                              hint: const Text('Please choose a hostel'),
-                              value: hostel,
-                              onChanged: (newValue) {
-                                setState(() {
-                                  hostel = newValue;
-                                });
-                              },
-                              items: hostelNames.map((hos) {
-                                return DropdownMenuItem(
-                                  child: Text(hos),
-                                  value: hos,
-                                );
-                              }).toList(),
-                            ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        CustomButton(
+                          msg: 'SignUp',
+                          loading: loading,
+                          onTap: () {
+                            if (_formKey.currentState!.validate()) {
+                              _checkEmailExists();
+                            }
+                          },
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 20, right: 12, bottom: 12),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Already have an account already?",
+                                style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.tertiary),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, RoutesName.login);
+                                },
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .tertiary),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Form(
-                        key: _formKey,
-                        child: Column(
-                          children: [
-                            CustomTextField(
-                              hintText: 'Email',
-                              controller: emailController,
-                              icon: Icons.email,
-                              keyboardType: TextInputType.emailAddress,
-                              obscureText: false,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Enter email';
-                                }
-                                return null;
-                              },
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            CustomTextField(
-                              hintText: 'Password',
-                              controller: passwordController,
-                              icon: Icons.password,
-                              obscureText: true,
-                              keyboardType: TextInputType.text,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Enter password';
-                                }
-                                return null;
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      CustomButton(
-                        msg: 'SignUp',
-                        loading: loading,
-                        onTap: () {
-                          if (_formKey.currentState!.validate()) {
-                            _checkEmailExists();
-                          }
-                        },
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20, right: 12, bottom: 12),
-                        child: Row(
-                          children: [
-                            const Text("Already have an account already?"),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, RoutesName.login);
-                              },
-                              child: const Text(
-                                'Login',
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 20,

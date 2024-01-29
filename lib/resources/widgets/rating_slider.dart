@@ -53,13 +53,13 @@ class _RatingScreenState extends State<RatingScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
+            Text(
               'Rate the food:',
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 decoration: TextDecoration.none,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.tertiary,
               ),
             ),
             Slider(

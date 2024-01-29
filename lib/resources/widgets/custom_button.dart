@@ -23,7 +23,7 @@ class CustomButton extends StatelessWidget {
         child: Container(
           // Decoration for the button
           decoration: BoxDecoration(
-            boxShadow: [
+boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
                 offset: const Offset(2, 2),
@@ -44,7 +44,7 @@ class CustomButton extends StatelessWidget {
                   color: Colors.white,
                 )
                     : CustomText(
-                  text: msg,
+text: msg,
                   color: Colors.white,
                 ),
               ),

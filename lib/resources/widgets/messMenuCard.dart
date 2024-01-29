@@ -26,7 +26,7 @@ class MessMenuCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
@@ -35,7 +35,7 @@ class MessMenuCard extends StatelessWidget {
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.none,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
               ],
@@ -43,28 +43,28 @@ class MessMenuCard extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               'Breakfast: $breakfast',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 decoration: TextDecoration.none,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.tertiary,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               'Lunch: $lunch',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 decoration: TextDecoration.none,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.tertiary,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               'Dinner: $dinner',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 decoration: TextDecoration.none,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.tertiary,
               ),
             ),
           ],

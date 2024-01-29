@@ -1,4 +1,4 @@
-import 'package:auberge/resources/colors.dart';
+import 'package:auberge/resources/theme/theme.dart';
 import 'package:auberge/viewmodel/messMenuProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -29,14 +29,16 @@ class MyApp extends StatelessWidget {
           create: (_) => MMenuProvider(),
         )
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Hostel Management',
-        theme: ThemeData(
-          primarySwatch: primary,
-        ),
-        initialRoute: RoutesName.splash,
-        onGenerateRoute: Routes.generateRoute,
+      child: Consumer<UserProvider>(
+        builder: (context, userProvider, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Hostel Management',
+            theme: Styles.themeData(userProvider.darkTheme, context),
+            initialRoute: RoutesName.splash,
+            onGenerateRoute: Routes.generateRoute,
+          );
+        },
       ),
     );
   }

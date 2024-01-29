@@ -7,12 +7,14 @@ class CustomTextField extends StatelessWidget {
   final validator;
   final keyboardType;
   final icon;
+  final color;
 
   const CustomTextField(
       {Key? key,
       required this.hintText,
       required this.controller,
       required this.obscureText,
+        required this.color,
       this.validator,
       required this.keyboardType,
       this.icon= Icons.view_day})
@@ -35,6 +37,8 @@ class CustomTextField extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: TextFormField(
+            //style: TextStyle(color: Theme.of(context).colorScheme.secondary),
+            style: TextStyle(color: color),
             keyboardType: keyboardType,
             controller: controller,
             obscureText: obscureText,

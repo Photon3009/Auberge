@@ -116,17 +116,17 @@ class _AddMessMenuCardState extends State<AddMessMenuCard> {
                                     color: Colors.white)
                                     : Text('Add'),
                               ),
-                            ),
-                          ],
-                          content: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                CustomTextField(
-                                  hintText: "Breakfast",
-                                  controller: bController,
-                                  keyboardType: TextInputType.text,
-                                  obscureText: false,
-                                ),
+                               ),
+                            ],
+                            content: SingleChildScrollView(
+                              child: Expanded(
+                                child: Column(
+                                  children: [
+                                    CustomTextField(
+                                        hintText: "Breakfast",
+                                        controller: bController,
+                                        obscureText: false,
+                                        keyboardType: TextInputType.text),
                                 CustomTextField(
                                   hintText: "Lunch",
                                   controller: lController,

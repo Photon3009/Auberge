@@ -38,23 +38,23 @@ class ComplainContainer extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.none,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Status',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.none,
-                        color: Colors.black,
+                        color: Theme.of(context).colorScheme.tertiary,
                       ),
                     ),
                     Text(
@@ -77,10 +77,10 @@ class ComplainContainer extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               description,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 decoration: TextDecoration.none,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.tertiary,
               ),
             ),
             const SizedBox(height: 8),
