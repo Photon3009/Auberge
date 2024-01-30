@@ -24,7 +24,7 @@ class CustomButton extends StatelessWidget {
                     offset: const Offset(2, 2),
                     blurRadius: 4)
               ],
-              color: const Color(0xFF26282F),
+              color: Theme.of(context).colorScheme.tertiary,
               borderRadius: BorderRadius.circular(20)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +38,7 @@ class CustomButton extends StatelessWidget {
                       )
                     : CustomText(
                         text: msg,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
               )
             ],

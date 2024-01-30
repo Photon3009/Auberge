@@ -39,9 +39,9 @@ class _HomeState extends State<MenuScreen> {
     return Padding(
       padding: EdgeInsets.only(top: screenHeight / 50),
       child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.secondary,
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
@@ -81,7 +81,7 @@ class _HomeState extends State<MenuScreen> {
                     Row(
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.add, size: 30),
+                          icon: Icon(Icons.add, size: 30, color: Theme.of(context).colorScheme.tertiary,),
                           onPressed: () {
                             if (userType == "Admin") {
                               Navigator.pushNamed(context, RoutesName.mMenu);
