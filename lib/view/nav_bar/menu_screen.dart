@@ -48,7 +48,7 @@ class _HomeState extends State<MenuScreen> {
         ),
         child: SingleChildScrollView(
           child: SizedBox(
-            height: screenHeight / 1.1,
+            height: screenHeight / 1.0,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

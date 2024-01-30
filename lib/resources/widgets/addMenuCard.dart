@@ -9,75 +9,56 @@ class AddMessMenuCard extends StatefulWidget {
   final String day;
 
   const AddMessMenuCard({
-    Key? key,
+    super.key,
     required this.day,
-  }) : super(key: key);
+  });
 
   @override
   State<AddMessMenuCard> createState() => _AddMessMenuCardState();
 }
 
 class _AddMessMenuCardState extends State<AddMessMenuCard> {
-  late TextEditingController bController;
-  late TextEditingController lController;
-  late TextEditingController dController;
-  bool loading = false;
-
-  @override
-  void initState() {
-    super.initState();
-    bController = TextEditingController();
-    lController = TextEditingController();
-    dController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    bController.dispose();
-    lController.dispose();
-    dController.dispose();
-    super.dispose();
-  }
-
-  void createMenu() {
-    final brek = bController.text;
-    final lun = lController.text;
-    final din = dController.text;
-
-    setState(() {
-      loading = true;
-    });
-
-    FirebaseFirestore.instance
-        .collection('MessMenu')
-        .doc(widget.day)
-        .set({
-      'breakfast': brek,
-      'lunch': lun,
-      'dinner': din,
-    }).then((value) {
-      Utils.toastMessage('Menu added successfully');
-      setState(() {
-        loading = false;
-      });
-      bController.clear();
-      lController.clear();
-      dController.clear();
-
-      Navigator.pop(context);
-      Navigator.pushNamed(context, RoutesName.post, arguments: 1);
-    }).catchError((error) {
-      setState(() {
-        loading = false;
-      });
-      Utils.flushBarErrorMessage('Failed to add menu: $error', context);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    TextEditingController bController = TextEditingController();
+    TextEditingController lController = TextEditingController();
+    TextEditingController dController = TextEditingController();
+    bool loading = false;
+
+    void createComplain() {
+      final brek = bController.text.toString();
+      final lun = lController.text.toString();
+      final din = dController.text.toString();
+
+      setState(() {
+        loading = true;
+      });
+
+      FirebaseFirestore.instance.collection('MessMenu').doc(widget.day).set({
+        'brekfast': brek,
+        'lunch': lun,
+        'dinner': din,
+      }).then((value) {
+        Utils.toastMessage('Menu added successfully');
+        setState(() {
+          loading = false;
+        });
+        bController.clear();
+        lController.clear();
+        dController.clear();
+
+        Navigator.pop(context);
+        Navigator.pushNamed(context, RoutesName.post, arguments: 1);
+      }).catchError((error) {
+        setState(() {
+          loading = false;
+        });
+        Utils.flushBarErrorMessage('Failed to add menu: $error', context);
+      });
+    }
+
     return Padding(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 12),
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -95,28 +76,31 @@ class _AddMessMenuCardState extends State<AddMessMenuCard> {
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.none,
                     color: Colors.black,
                   ),
                 ),
                 IconButton(
                   onPressed: () {
                     showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: const Text('Change Mess Menu'),
-                          actions: <Widget>[
-                            Center(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  createMenu();
-                                },
-                                child: loading
-                                    ? CircularProgressIndicator(
-                                    color: Colors.white)
-                                    : Text('Add'),
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Change Mess Menu'),
+                            actions: <Widget>[
+                              Center(
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    createComplain();
+                                    // Navigator.of(context).pop();
+                                  },
+                                  child: loading
+                                      ? CircularProgressIndicator(
+                                    color: Colors.white,
+                                  )
+                                      : Text('Add'),
+                                ),
                               ),
-                               ),
                             ],
                             content: SingleChildScrollView(
                               child: Expanded(
@@ -124,27 +108,28 @@ class _AddMessMenuCardState extends State<AddMessMenuCard> {
                                   children: [
                                     CustomTextField(
                                         hintText: "Breakfast",
+                                        color: Theme.of(context).colorScheme.secondary,
                                         controller: bController,
                                         obscureText: false,
                                         keyboardType: TextInputType.text),
-                                CustomTextField(
-                                  hintText: "Lunch",
-                                  controller: lController,
-                                  keyboardType: TextInputType.text,
-                                  obscureText: false,
+                                    CustomTextField(
+                                        hintText: "Lunch",
+                                        color: Theme.of(context).colorScheme.secondary,
+                                        controller: lController,
+                                        obscureText: false,
+                                        keyboardType: TextInputType.text),
+                                    CustomTextField(
+                                        hintText: "Dinner",
+                                        color: Theme.of(context).colorScheme.secondary,
+                                        controller: dController,
+                                        obscureText: false,
+                                        keyboardType: TextInputType.text),
+                                  ],
                                 ),
-                                CustomTextField(
-                                  hintText: "Dinner",
-                                  controller: dController,
-                                  keyboardType: TextInputType.text,
-                                  obscureText: false,
-                                ),
-                              ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                    );
+                          );
+                        });
                   },
                   icon: const Icon(Icons.add),
                   color: Colors.black,

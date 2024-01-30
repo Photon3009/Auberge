@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,19 +7,21 @@ import 'package:auberge/utils/routes/routes_names.dart';
 import 'package:auberge/utils/utils.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final _formKey = GlobalKey<FormState>();
-  bool loading = false;
-  final List<String> hostelNames = [
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _loading = false;
+  String? _hostel;
+
+  final List<String> _hostelNames = [
     'Aryabhatt Hostel',
     'Ramanujan Hostel',
     'Vishveshwarya Bhawan - A Hostel',
@@ -31,44 +31,106 @@ class _LoginScreenState extends State<LoginScreen> {
     'Bhabha Hostel',
   ];
 
-  String? hostel;
-
   @override
   void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
-    emailController.dispose();
-    passwordController.dispose();
   }
 
-  void login() {
+  Future<void> _login() async {
     setState(() {
-      loading = true;
+      _loading = true;
     });
-    _auth
-        .signInWithEmailAndPassword(
-            email: emailController.text.toString(),
-            password: passwordController.text.toString())
-        .then((value) {
-      setState(() {
-        loading = false;
-      });
+
+    try {
+      // Attempt to sign in with provided email and password
+      final UserCredential userCredential =
+      await _auth.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+      // If successful, navigate to the post screen
+      Utils.toastMessage('Logged in as ${userCredential.user!.email}😊');
       Navigator.pushNamed(context, RoutesName.post, arguments: 0);
-      Utils.toastMessage('Logged in as ${value.user!.email.toString()}😊');
-    }).onError((error, stackTrace) {
-      Utils.flushBarErrorMessage(error.toString(), context);
+    } catch (e) {
+      // If sign in fails, display an error message
+      Utils.flushBarErrorMessage(e.toString(), context);
+    } finally {
+      // Regardless of success or failure, stop loading
       setState(() {
-        loading = false;
+        _loading = false;
       });
-    });
+    }
+  }
+
+  Widget _buildHostelDropdown() {
+    // Widget for building the dropdown button for selecting hostel
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: DropdownButton<String>(
+        hint: const Text('Please choose a hostel'),
+        value: _hostel,
+        onChanged: (String? newValue) {
+          setState(() {
+            _hostel = newValue;
+          });
+        },
+        items: _hostelNames.map((String hos) {
+          return DropdownMenuItem<String>(
+            child: Text(hos),
+            value: hos,
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+  Widget _buildForm() {
+    // Widget for building the login form
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          CustomTextField(
+            hintText: 'Email',
+            color: Colors.black,
+            controller: _emailController,
+            icon: Icons.email,
+            keyboardType: TextInputType.emailAddress,
+            obscureText: false,
+            validator: (String? value) {
+              if (value!.isEmpty) {
+                return 'Enter email';
+              }
+              return null;
+            },
+          ),
+          const SizedBox(height: 5),
+          CustomTextField(
+            hintText: 'Password',
+            color: Colors.black,
+            controller: _passwordController,
+            icon: Icons.password,
+            obscureText: true,
+            keyboardType: TextInputType.text,
+            validator: (String? value) {
+              if (value!.isEmpty) {
+                return 'Enter password';
+              }
+              return null;
+            },
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-
     return WillPopScope(
       onWillPop: () async {
+        // Handle back button press to exit the app
         SystemNavigator.pop();
         return true;
       },
@@ -81,30 +143,32 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           body: SingleChildScrollView(
             child: SizedBox(
-              height: screenHeight,
+              height: MediaQuery.of(context).size.height,
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  minHeight: screenHeight,
+                  minHeight: MediaQuery.of(context).size.height,
                 ),
                 child: Column(
                   children: <Widget>[
+                    // Logo images
                     Expanded(
                       child: Image.asset(
                         'assets/images/aub_logo4-removebg-preview.png',
-                        width: screenWidth * 0.7,
-                        height: screenHeight * 0.15,
+                        width: MediaQuery.of(context).size.width * 0.7,
+                        height: MediaQuery.of(context).size.height * 0.15,
                         fit: BoxFit.scaleDown,
                       ),
                     ),
                     Expanded(
                       child: Image.asset(
                         'assets/images/duck-dance-unscreen.gif',
-                        width: screenWidth * 0.7,
-                        height: screenHeight * 0.2,
+                        width: MediaQuery.of(context).size.width * 0.7,
+                        height: MediaQuery.of(context).size.height * 0.2,
                         fit: BoxFit.scaleDown,
                       ),
                     ),
                     Container(
+                      // Login form container
                       padding: const EdgeInsets.only(top: 15),
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.secondary,
@@ -114,106 +178,36 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 12, right: 12, bottom: 12),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).colorScheme.secondary,
-                                border:
-                                    Border.all(color: Colors.black, width: 0.2),
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.3),
-                                    offset: const Offset(2, 1),
-                                    blurRadius: 2,
-                                  ),
-                                ],
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: DropdownButton(
-                                  hint: const Text('Please choose a hostel'),
-                                  value: hostel,
-                                  onChanged: (newValue) {
-                                    setState(() {
-                                      hostel = newValue;
-                                    });
-                                  },
-                                  items: hostelNames.map((hos) {
-                                    return DropdownMenuItem(
-                                      child: Text(hos),
-                                      value: hos,
-                                    );
-                                  }).toList(),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                           Form(
-                          key: _formKey,
-                          child: Column(
-                            children: [
-                              CustomTextField(
-                                hintText: 'Email',
-                                controller: emailController,
-                                icon: Icons.email,
-                                keyboardType: TextInputType.emailAddress,
-                                obscureText: false,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Enter email';
-                                  }
-                                  return null;
-                                },
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                CustomTextField(
-                                  hintText: 'Password',
-                                  color: Colors.black,
-                                  controller: passwordController,
-                                  icon: Icons.password,
-                                  obscureText: true,
-                                  keyboardType: TextInputType.text,
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Enter password';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
+                          _buildHostelDropdown(), // Hostel dropdown
+                          const SizedBox(height: 10),
+                          _buildForm(), // Login form
+                          const SizedBox(height: 30),
+                          // Login button
                           CustomButton(
                             msg: 'Login',
-                            loading: loading,
+                            loading: _loading,
                             onTap: () {
                               if (_formKey.currentState!.validate()) {
-                                login();
+                                _login();
                               }
                             },
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                left: 20, right: 12, bottom: 12),
+                              left: 20,
+                              right: 12,
+                              bottom: 12,
+                            ),
                             child: Row(
                               children: [
+                                // Signup link
                                 Text(
                                   "Don't have an account already?",
                                   style: TextStyle(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .tertiary),
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .tertiary,
+                                  ),
                                 ),
                                 TextButton(
                                   onPressed: () {
@@ -223,10 +217,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: Text(
                                     'SignUp',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .tertiary),
+                                      fontWeight: FontWeight.bold,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .tertiary,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -235,16 +230,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    const SizedBox(height: 20),
+                    // Footer text
                     const Text(
-                      "Made for IETians with ❤",
+                      "Made for IETians with ❤️",
                       style: TextStyle(color: Colors.grey, fontSize: 18),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
