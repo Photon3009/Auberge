@@ -16,6 +16,7 @@ class AnnouncementContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size=MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 12),
       child: Container(
