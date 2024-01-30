@@ -37,7 +37,7 @@ class _HomeState extends State<MenuScreen> {
     final dinner = data?['dinner'] as String? ?? "Loading..";
 
     return Padding(
-      padding: EdgeInsets.only(top: screenHeight / 30),
+      padding: EdgeInsets.only(top: screenHeight / 50),
       child: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -48,7 +48,7 @@ class _HomeState extends State<MenuScreen> {
         ),
         child: SingleChildScrollView(
           child: SizedBox(
-            height: screenHeight / 1.1,
+            height: screenHeight / 1.0,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
