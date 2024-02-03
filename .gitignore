@@ -43,7 +43,7 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 # Ignore generated files
-#pubspec.lock
+ pubspec.lock
 
 # Ignore Windows runner files
 windows/runner/flutter_window.cpp
