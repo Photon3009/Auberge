@@ -37,7 +37,7 @@ class _HomeState extends State<MenuScreen> {
     final dinner = data?['dinner'] as String? ?? "Loading..";
 
     return Padding(
-      padding: EdgeInsets.only(top: screenHeight / 30),
+      padding: EdgeInsets.only(top: screenHeight / 50),
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.secondary,
