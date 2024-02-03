@@ -45,6 +45,5 @@ app.*.map.json
 # Ignore generated files
 .pubspec.lock
 
-.gitignore
 # Ignore Windows runner files
 windows/runner/flutter_window.cpp
