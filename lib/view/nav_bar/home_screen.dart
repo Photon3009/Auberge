@@ -43,12 +43,12 @@ class _HomeState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
- return SingleChildScrollView(
+    return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(top: h / 50),
         child: Container(
-          decoration: const BoxDecoration(
-              color: Colors.white,
+          decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20))),
           child: SizedBox(
@@ -73,8 +73,8 @@ class _HomeState extends State<HomeScreen> {
                             if (name != null)
                               Text('Hi $name 👋',
                                   overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(
-                                      color: primary,
+                                  style: TextStyle(
+                                      color:Theme.of(context).colorScheme.tertiary,
                                       fontFamily: "Sen",
                                       fontSize: 30,
                                       fontWeight: FontWeight.w500)),
@@ -126,10 +126,12 @@ class _HomeState extends State<HomeScreen> {
 
                                 if (!snapshot.hasData) {
                                   return Container(
-                                      color: Colors.white,
-                                      child: const Center(
+                                      color: Theme.of(context).colorScheme.secondary,
+                                      child: Center(
                                           child: SpinKitFadingCube(
-                                              color: primary, size: 100.0)));
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .primary, size: 100.0)));
                                 }
 
                                 // Data is available
@@ -158,14 +160,14 @@ class _HomeState extends State<HomeScreen> {
                                   reverse: false,
                                   itemBuilder: (context, index) {
                                     final announcement =
-                                        announcementDocs[index].data()
-                                            as Map<String, dynamic>?;
+                                    announcementDocs[index].data()
+                                    as Map<String, dynamic>?;
                                     final title =
                                         announcement?['title'] as String? ??
                                             "";
                                     final description =
                                         announcement?['description']
-                                                as String? ??
+                                        as String? ??
                                             "";
                                     final timestamp = announcement?['date'];
                                     final time = DateTime.parse(timestamp);

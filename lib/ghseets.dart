@@ -6,6 +6,7 @@ import 'package:gsheets/gsheets.dart';
 import 'viewmodel/users.dart';
 
 class Gsheets {
+  // Replace with your GSheets credentials and spreadsheet ID
   static const _credentials = r'''
 {
  YOUR GSEETS CREDENTIALS
@@ -14,7 +15,7 @@ class Gsheets {
 
   static const _spreadsheetID = 'YOUR SPREADSHEET ID';
   final UserServices _userServicse = UserServices();
-
+  // Method to read data from GSheet based on email and hostel
   Future<bool> readDatafromGSheet(String email, String hostel) async {
     final gsheets = GSheets(_credentials);
     final ss = await gsheets.spreadsheet(_spreadsheetID);
@@ -41,7 +42,7 @@ class Gsheets {
     print(check);
     return check;
   }
-
+  // Method to fetch and store user details from GSheet
   storingDetails(BuildContext context) async {
     final gsheets = GSheets(_credentials);
     final ss = await gsheets.spreadsheet(_spreadsheetID);

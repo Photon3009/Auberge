@@ -7,25 +7,32 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onTap;
   final bool loading;
 
-  const CustomButton(
-      {Key? key, required this.msg, required this.onTap, this.loading = false})
-      : super(key: key);
+  const CustomButton({
+    Key? key,
+    required this.msg,
+    required this.onTap,
+    this.loading = false,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 12, right: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
+          // Decoration for the button
           decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    offset: const Offset(2, 2),
-                    blurRadius: 4)
-              ],
-              color: Theme.of(context).colorScheme.tertiary,
-              borderRadius: BorderRadius.circular(20)),
+boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                offset: const Offset(2, 2),
+                blurRadius: 4,
+              ),
+            ],
+            color: const Color(0xFF26282F),
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -33,14 +40,14 @@ class CustomButton extends StatelessWidget {
                 padding: const EdgeInsets.all(14),
                 child: loading
                     ? const CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: Colors.white,
-                      )
+                  strokeWidth: 2,
+                  color: Colors.white,
+                )
                     : CustomText(
-                        text: msg,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-              )
+text: msg,
+                  color: Colors.white,
+                ),
+              ),
             ],
           ),
         ),

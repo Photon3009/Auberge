@@ -46,6 +46,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     const SizedBox(
                       height: 10,
                     ),
+                    //mention hostel
                     const Text("What's your",
                         style: TextStyle(
                             color: primary,
