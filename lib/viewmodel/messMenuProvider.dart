@@ -5,7 +5,9 @@ class MMenuProvider extends ChangeNotifier {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   DocumentSnapshot? _documentSnapshot;
 
-  Future fetchMenu() async {
+  // Fetching the menu according to the days
+  Future<void> fetchMenu() async {
+    // Fetching the current date and time
     DateTime now = DateTime.now();
     int currentDayOfWeek = now.weekday;
     String dayName = '';
@@ -36,9 +38,10 @@ class MMenuProvider extends ChangeNotifier {
         dayName = 'Unknown';
         break;
     }
+
     try {
       _documentSnapshot =
-          await firestore.collection('MessMenu').doc(dayName).get();
+      await firestore.collection('MessMenu').doc(dayName).get();
       notifyListeners();
     } catch (e) {
       if (kDebugMode) {

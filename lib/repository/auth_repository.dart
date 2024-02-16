@@ -6,30 +6,33 @@ import '../utils/utils.dart';
 
 class FirebaseAuthMethods {
   final FirebaseAuth _auth;
+
   FirebaseAuthMethods(this._auth);
 
+  // Get the current user
   User get user => _auth.currentUser!;
-  var verificationId = "";
 
-  Stream<User?> get authState => FirebaseAuth.instance.authStateChanges();
+  // Stream to listen for authentication state changes
+  Stream<User?> get authState => _auth.authStateChanges();
 
-  Future signInWithEmailAndPassword(
+  // Method to handle user registration
+  Future<void> signInWithEmailAndPassword(
       String email, String password, String name, BuildContext context) async {
     try {
-      await _auth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) {
-        FirebaseFirestore.instance
-            .collection('Users')
-            .doc(_auth.currentUser?.uid)
-            .set({"email": email, "name": name});
-      });
+      await _auth.createUserWithEmailAndPassword(email: email, password: password);
+
+      // Add user details to Firestore after registration
+      await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(_auth.currentUser?.uid)
+          .set({"email": email, "name": name});
     } on FirebaseAuthException catch (e) {
       Utils.snackBar(e.message!, context);
     }
   }
 
-  Future loginInWithEmailAndPassword(
+  // Method to handle user login
+  Future<void> loginWithEmailAndPassword(
       String email, String password, BuildContext context) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
@@ -38,7 +41,8 @@ class FirebaseAuthMethods {
     }
   }
 
-  Future signOut(BuildContext context) async {
+  // Method to handle user sign out
+  Future<void> signOut(BuildContext context) async {
     try {
       await _auth.signOut();
     } on FirebaseAuthException catch (e) {

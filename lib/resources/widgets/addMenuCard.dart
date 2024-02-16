@@ -96,8 +96,8 @@ class _AddMessMenuCardState extends State<AddMessMenuCard> {
                                   },
                                   child: loading
                                       ? CircularProgressIndicator(
-                                          color: Colors.white,
-                                        )
+                                    color: Colors.white,
+                                  )
                                       : Text('Add'),
                                 ),
                               ),

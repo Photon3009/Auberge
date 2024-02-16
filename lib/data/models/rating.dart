@@ -9,6 +9,7 @@ class Rating {
     required this.timestamp,
   });
 
+  // Convert the Rating object to a Map
   Map<String, dynamic> toMap() {
     return {
       'userId': userId,
