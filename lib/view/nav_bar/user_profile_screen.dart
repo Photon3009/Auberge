@@ -16,6 +16,7 @@ class ProfileScreen extends StatefulWidget {
 class _HomeState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    var size=MediaQuery.of(context).size;
     final userProvider = Provider.of<UserProvider>(context);
     userProvider.setUser();
     final userType = userProvider.user?.userType ?? 'Unknown';
@@ -30,18 +31,18 @@ class _HomeState extends State<ProfileScreen> {
     final themeChange = Provider.of<UserProvider>(context);
 
     return Padding(
-      padding: const EdgeInsets.only(top: 28.0),
+      padding: const EdgeInsets.only(top: 20.0,),
       child: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/zyro-image (2).png'),
-              fit: BoxFit.cover,
+              image: AssetImage('assets/images/zyro-image (2).png',),
+              fit: BoxFit.fill,
             ),
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
         child: SingleChildScrollView(
           child: Container(
-            margin: const EdgeInsets.only(bottom: 60),
+            margin: const EdgeInsets.only(bottom: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -52,6 +53,7 @@ class _HomeState extends State<ProfileScreen> {
                       fontSize: 34.0,
                       fontFamily: "Sen",
                       fontWeight: FontWeight.bold,
+                      height: 1,
                       color: Colors.black),
                 ),
                 Text(
@@ -109,7 +111,8 @@ class _HomeState extends State<ProfileScreen> {
                       themeChange.darkTheme = value!;
                       Fluttertoast.showToast(msg: 'Theme changed to ${value ? 'Dark mode' : 'Light mode'}', toastLength: Toast.LENGTH_SHORT);
                     }),
-                const SizedBox(height: 250.0),
+               // const SizedBox(height: 135.0),
+                SizedBox(height: size.height*0.179,),
                 const Text("Made for IETians with ❤️",
                     style: TextStyle(
                         color: Colors.white,
@@ -120,19 +123,21 @@ class _HomeState extends State<ProfileScreen> {
                   padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
                   child: Center(
                     child: Text(
-                        "If you would like to provide feedback or suggest new features, please send an email to aubergefeedback@gmail.com",
+                        "To provide feedback or to suggest new features, please email at aubergefeedback@gmail.com",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white,
                             fontFamily: "Sen",
-                            fontSize: 15)),
+                            fontSize: 14.3)),
                   ),
                 ),
+             const SizedBox(height: 20),
               ],
             ),
           ),
         ),
       ),
+
     );
   }
 }
