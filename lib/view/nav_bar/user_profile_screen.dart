@@ -16,6 +16,7 @@ class ProfileScreen extends StatefulWidget {
 class _HomeState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    var size=MediaQuery.of(context).size;
     final userProvider = Provider.of<UserProvider>(context);
     userProvider.setUser();
     final userType = userProvider.user?.userType ?? 'Unknown';
@@ -110,7 +111,8 @@ class _HomeState extends State<ProfileScreen> {
                       themeChange.darkTheme = value!;
                       Fluttertoast.showToast(msg: 'Theme changed to ${value ? 'Dark mode' : 'Light mode'}', toastLength: Toast.LENGTH_SHORT);
                     }),
-                const SizedBox(height: 140.0),
+               // const SizedBox(height: 135.0),
+                SizedBox(height: size.height*0.179,),
                 const Text("Made for IETians with ❤️",
                     style: TextStyle(
                         color: Colors.white,
@@ -129,7 +131,7 @@ class _HomeState extends State<ProfileScreen> {
                             fontSize: 14.3)),
                   ),
                 ),
-                Container(color: Colors.grey,)
+             const SizedBox(height: 20),
               ],
             ),
           ),
