@@ -88,6 +88,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
       });
     });
   }
+  bool _isSecurePassword=true;
+  Widget togglePassword(){
+    return IconButton(onPressed: (){
+      setState(() {
+        _isSecurePassword=!_isSecurePassword;
+      });
+
+    }, icon: _isSecurePassword?Icon(Icons.visibility):Icon(Icons.visibility_off));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -176,37 +185,103 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           key: _formKey,
                           child: Column(
                             children: [
-                              CustomTextField(
-                                hintText: 'Email',
-                                color: Colors.black,
-                                controller: emailController,
-                                icon: Icons.email,
-                                keyboardType: TextInputType.emailAddress,
-                                obscureText: false,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Enter email';
-                                  }
-                                  return null;
-                                },
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                child: TextFormField(
+                                  //color: Colors.black,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    hintText: 'Email',
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    prefixIconColor: Colors.grey,
+                                    prefixIcon: Icon(Icons.email),
+                                  ),
+                                  controller: emailController,
+                                  obscureText: false,
+                                  keyboardType: TextInputType.text,
+                                  validator: (String? value) {
+                                    if (value!.isEmpty) {
+                                      return 'Enter password';
+                                    }
+                                    return null;
+                                  },
+                                ),
                               ),
-                              const SizedBox(
-                                height: 5,
+                              // CustomTextField(
+                              //   hintText: 'Email',
+                              //   color: Colors.black,
+                              //   controller: _emailController,
+                              //   icon: Icons.email,
+                              //   keyboardType: TextInputType.emailAddress,
+                              //   obscureText: false,
+                              //   validator: (String? value) {
+                              //     if (value!.isEmpty) {
+                              //       return 'Enter email';
+                              //     }
+                              //     return null;
+                              //   },
+                              // ),
+                              const SizedBox(height: 5),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                child: TextFormField(
+                                  //color: Colors.black,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    hintText: 'Password',
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    prefixIconColor: Colors.grey,
+                                    suffixIconColor: Colors.grey,
+                                    suffixIcon: togglePassword(),
+                                    prefixIcon: Icon(Icons.password),
+                                  ),
+                                  controller: passwordController,
+
+                                  obscureText: _isSecurePassword,
+                                  keyboardType: TextInputType.text,
+                                  validator: (String? value) {
+                                    if (value!.isEmpty) {
+                                      return 'Enter password';
+                                    }
+                                    return null;
+                                  },
+                                ),
                               ),
-                              CustomTextField(
-                                hintText: 'Password',
-                                color: Colors.black,
-                                controller: passwordController,
-                                icon: Icons.password,
-                                obscureText: true,
-                                keyboardType: TextInputType.text,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Enter password';
-                                  }
-                                  return null;
-                                },
-                              ),
+                              // CustomTextField(
+                              //   hintText: 'Email',
+                              //   color: Colors.black,
+                              //   controller: emailController,
+                              //   icon: Icons.email,
+                              //   keyboardType: TextInputType.emailAddress,
+                              //   obscureText: false,
+                              //   validator: (value) {
+                              //     if (value!.isEmpty) {
+                              //       return 'Enter email';
+                              //     }
+                              //     return null;
+                              //   },
+                              // ),
+                              // const SizedBox(
+                              //   height: 5,
+                              // ),
+                              // CustomTextField(
+                              //   hintText: 'Password',
+                              //   color: Colors.black,
+                              //   controller: passwordController,
+                              //   icon: Icons.password,
+                              //   obscureText: true,
+                              //   keyboardType: TextInputType.text,
+                              //   validator: (value) {
+                              //     if (value!.isEmpty) {
+                              //       return 'Enter password';
+                              //     }
+                              //     return null;
+                              //   },
+                              // ),
                             ],
                           ),
                         ),
